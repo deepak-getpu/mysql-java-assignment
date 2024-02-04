@@ -45,6 +45,5 @@ CREATE TABLE project_category (
 	category_id INT NOT NULL,
 	FOREIGN KEY (project_id) REFERENCES project (project_id) ON DELETE CASCADE,
 	FOREIGN KEY (category_id) REFERENCES category (category_id) ON DELETE CASCADE,
-	UNIQUE KEY (project_id, category_id)
-	
+	UNIQUE KEY (project_id, category_id)	
 );
