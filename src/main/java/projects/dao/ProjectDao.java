@@ -23,7 +23,7 @@ public class ProjectDao extends DaoBase {
 	private static final String CATEGORY_TABLE = "category";
 	private static final String MATERIAL_TABLE = "material";
 	private static final String PROJECT_TABLE = "project";
-	private static final String PROJECT_CATEGORY_TABLE = "project category";
+	private static final String PROJECT_CATEGORY_TABLE = "project_category";
 	private static final String STEP_TABLE = "step";
 	
 	public Project insertProject(Project project) {
@@ -107,8 +107,7 @@ public class ProjectDao extends DaoBase {
 	}
 	
 	public Optional<Project> fetchProjectById(Integer projectId) {
-		String sql = "SELECT * FROM " + PROJECT_TABLE + "WHERE project_id = ?";
-		
+		String sql = "SELECT * FROM " + PROJECT_TABLE + " WHERE project_id = ?";
 		try(Connection conn = DbConnection.getConnection()) {
 			startTransaction(conn);
 			
@@ -152,7 +151,7 @@ public class ProjectDao extends DaoBase {
 		String sql = ""
 				+ "SELECT c.* FROM " + CATEGORY_TABLE + " c "
 				+ "JOIN " + PROJECT_CATEGORY_TABLE + " pc USING (category_id) "
-				+ "WHERE project_id = ?";
+				+ " WHERE project_id = ?";
 		// @formatter:on
 		
 		try(PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -212,7 +211,7 @@ public class ProjectDao extends DaoBase {
 	public boolean modifyProjectDetails(Project project) {
 		// @formatter:off
 		String sql = ""
-				+ "UPDATE " + PROJECT_TABLE + " SET"
+				+ "UPDATE " + PROJECT_TABLE + " SET "
 				+ "project_name = ?, "
 				+ "estimated_hours = ?, "
 				+ "actual_hours = ?, "
@@ -250,7 +249,7 @@ public class ProjectDao extends DaoBase {
 
 	public boolean deleteProject(Integer projectId) {
 		// @formatter:off
-		String sql = "DELETE FROM " + PROJECT_TABLE + "WHERE project_id = ?";
+		String sql = "DELETE FROM " + PROJECT_TABLE + " WHERE project_id = ?";
 		// @formatter:on
 		
 		try(Connection conn = DbConnection.getConnection()) {

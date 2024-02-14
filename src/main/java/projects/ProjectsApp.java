@@ -118,7 +118,7 @@ public class ProjectsApp {
 	
 	
 	Project project = new Project();
-	
+	project.setProjectId(curProject.getProjectId());
 	project.setProjectName(Objects.isNull(projectName) ? curProject.getProjectName() : projectName);
 	project.setEstimatedHours(Objects.isNull(estimatedHours) ? curProject.getEstimatedHours() : estimatedHours);
 	project.setActualHours(Objects.isNull(actualHours) ? curProject.getActualHours() : actualHours);
@@ -142,11 +142,11 @@ public class ProjectsApp {
 		curProject = projectService.fetchProjectById(projectId);
 		
 		if(Objects.isNull(curProject)) {
-			System.out.println("\nYou are not working with a project.");
+			System.out.println("\nInvalid project number.");
 		}
-		else {
-			System.out.println("\nYou are working with project: " + curProject);
-		}
+//		else {
+//			System.out.println("\nYou are working with project: " + curProject);
+//		}
 	}
 
 
@@ -234,6 +234,12 @@ public class ProjectsApp {
 		System.out.println("/nThese are available selections. Press the enter key to quit.");
 		
 		operations.forEach(line -> System.out.println(" " + line));
+		
+		if (Objects.isNull(curProject)) {
+			System.out.println("\nYou do not have an active project.");
+		} else {
+			System.out.println("\n You are viewing: " + curProject);
+		}
 	}
 	
 	
