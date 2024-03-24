@@ -20,31 +20,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/java/provided</name>
-			<type>2</type>
-			<location>E:/Java notes/Week 9 _ MySQL JDBC/Week 9 Homework Provided Sources/Week 9 Homework Provided Sources/provided</location>
-		</link>
-		<link>
-			<name>src/main/java/projects/entity/Category.java</name>
-			<type>1</type>
-			<location>E:/Java notes/Week 9 _ MySQL JDBC/Week 9 Homework Provided Sources/Week 9 Homework Provided Sources/entity/Category.java</location>
-		</link>
-		<link>
-			<name>src/main/java/projects/entity/Material.java</name>
-			<type>1</type>
-			<location>E:/Java notes/Week 9 _ MySQL JDBC/Week 9 Homework Provided Sources/Week 9 Homework Provided Sources/entity/Material.java</location>
-		</link>
-		<link>
-			<name>src/main/java/projects/entity/Project.java</name>
-			<type>1</type>
-			<location>E:/Java notes/Week 9 _ MySQL JDBC/Week 9 Homework Provided Sources/Week 9 Homework Provided Sources/entity/Project.java</location>
-		</link>
-		<link>
-			<name>src/main/java/projects/entity/Step.java</name>
-			<type>1</type>
-			<location>E:/Java notes/Week 9 _ MySQL JDBC/Week 9 Homework Provided Sources/Week 9 Homework Provided Sources/entity/Step.java</location>
-		</link>
-	</linkedResources>
 </projectDescription>
