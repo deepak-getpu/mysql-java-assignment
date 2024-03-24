@@ -7,19 +7,19 @@ package projects.exception;
  * 
  */
 @SuppressWarnings("serial")
-public class DbExceptionn extends RuntimeException {
+public class DbException extends RuntimeException {
 
 	/**
 	 * 
 	 */
-	public DbExceptionn() {
+	public DbException() {
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
 	 * @param message
 	 */
-	public DbExceptionn(String message) {
+	public DbException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
@@ -27,7 +27,7 @@ public class DbExceptionn extends RuntimeException {
 	/**
 	 * @param cause
 	 */
-	public DbExceptionn(Throwable cause) {
+	public DbException(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
@@ -36,7 +36,7 @@ public class DbExceptionn extends RuntimeException {
 	 * @param message
 	 * @param cause
 	 */
-	public DbExceptionn(String message, Throwable cause) {
+	public DbException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}

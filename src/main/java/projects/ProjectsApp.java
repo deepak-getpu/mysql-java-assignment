@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 import projects.entity.Project;
-import projects.exception.DbExceptionn;
+import projects.exception.DbException;
 import projects.services.ProjectService;
 
 
@@ -30,6 +30,19 @@ public class ProjectsApp {
 			);
 	
 	// @formatter:on
+	
+	private void printOperations() {
+		System.out.println("/nThese are available selections. Press the enter key to quit.");
+		
+		operations.forEach(line -> System.out.println(" " + line));
+		
+		if (Objects.isNull(curProject)) {
+			System.out.println("\nYou do not have an active project.");
+		} else {
+			System.out.println("\n You are viewing: " + curProject);
+		}
+	}
+	
 	
 	public static void main(String[] args) {
 		
@@ -82,7 +95,62 @@ public class ProjectsApp {
 		}	
 	}
 	
+private int getUserSelection() {
+		
+		printOperations(); 
+		
+		Integer input = getIntInput("Enter the selection.");
+		
+		return Objects.isNull(input) ? -1 : input;
+	}
 
+
+	private Integer getIntInput(String prompt) {
+		String input = getStringInput(prompt); 
+		
+		if (Objects.isNull(input)) {
+			return null; 
+		}
+		
+		try {
+		return Integer.valueOf(input);
+		} 
+		catch(NumberFormatException e) { 
+			throw new DbException(input + "is not a valid number.");
+		}	
+	}
+
+
+	private String getStringInput(String prompt) {
+		System.out.print(prompt + ": ");
+		String input = scanner.nextLine();
+		return input.isBlank() ? null : input.trim(); 
+	}
+	
+	private BigDecimal getDecimalInput(String prompt) {
+		
+		String input = getStringInput(prompt); 
+		
+		if (Objects.isNull(input)) {
+			return null; 
+		}
+		
+		try {
+		return new BigDecimal(input).setScale(2);
+		} 
+		catch(NumberFormatException e) { 
+			throw new DbException(input + "is not a valid decimal number.");
+		}	
+	}
+
+
+	private boolean exitMenu() {
+		System.out.println("Exiting the menu.");
+		return true;
+	}
+
+
+	
 	private void deleteProject() {
 		listProjects();
 		
@@ -157,6 +225,9 @@ public class ProjectsApp {
 		
 		projects.forEach(project -> System.out.println(" " + project.getProjectId() + ": " + project.getProjectName()));
 			
+//		for (Project project : projects) {
+//			System.out.println(project.getProjectName() + " : " + project.getProjectId());
+//		}
 	}
 
 
@@ -178,76 +249,6 @@ public class ProjectsApp {
 		Project dbProject = projectService.addProject(project);
 		System.out.println("You have successfully created the project " + dbProject);
 	}
-
-
-
-	private int getUserSelection() {
-		
-		printOperations(); 
-		
-		Integer input = getIntInput("Enter the selection.");
-		
-		return Objects.isNull(input) ? -1 : input;
-	}
-
-
-	private Integer getIntInput(String prompt) {
-		String input = getStringInput(prompt); 
-		
-		if (Objects.isNull(input)) {
-			return null; 
-		}
-		
-		try {
-		return Integer.valueOf(input);
-		} 
-		catch(NumberFormatException e) { 
-			throw new DbExceptionn(input + "is not a valid number.");
-		}	
-	}
-
-
-	private String getStringInput(String prompt) {
-		System.out.print(prompt + ": ");
-		String input = scanner.nextLine();
-		return input.isBlank() ? null : input.trim(); 
-	}
-	
-	private BigDecimal getDecimalInput(String prompt) {
-		
-		String input = getStringInput(prompt); 
-		
-		if (Objects.isNull(input)) {
-			return null; 
-		}
-		
-		try {
-		return new BigDecimal(input).setScale(2);
-		} 
-		catch(NumberFormatException e) { 
-			throw new DbExceptionn(input + "is not a valid decimal number.");
-		}	
-	}
-
-
-	private void printOperations() {
-		System.out.println("/nThese are available selections. Press the enter key to quit.");
-		
-		operations.forEach(line -> System.out.println(" " + line));
-		
-		if (Objects.isNull(curProject)) {
-			System.out.println("\nYou do not have an active project.");
-		} else {
-			System.out.println("\n You are viewing: " + curProject);
-		}
-	}
-	
-	
-	private boolean exitMenu() {
-		System.out.println("Exiting the menu.");
-		return true;
-	}
-
 
 	
 } // End of the class

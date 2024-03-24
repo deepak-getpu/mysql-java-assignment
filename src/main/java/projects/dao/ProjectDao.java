@@ -15,7 +15,7 @@ import projects.entity.Category;
 import projects.entity.Material;
 import projects.entity.Project;
 import projects.entity.Step;
-import projects.exception.DbExceptionn;
+import projects.exception.DbException;
 import provided.util.DaoBase;
 
 public class ProjectDao extends DaoBase {
@@ -56,11 +56,11 @@ public class ProjectDao extends DaoBase {
 			}
 			catch(Exception e) {
 				rollbackTransaction(conn);
-				throw new DbExceptionn(e);
+				throw new DbException(e);
 			}
 		}
 		catch(SQLException e) {
-			throw new DbExceptionn(e);
+			throw new DbException(e);
 		}
 	}
 	
@@ -97,12 +97,12 @@ public class ProjectDao extends DaoBase {
 			
 			catch(Exception e) {
 				rollbackTransaction(conn);
-				throw new DbExceptionn(e);
+				throw new DbException(e);
 			}
 		}
 		
 		catch(SQLException e) { 
-			throw new DbExceptionn (e);
+			throw new DbException (e);
 		}		
 	}
 	
@@ -123,7 +123,7 @@ public class ProjectDao extends DaoBase {
 						}
 					}
 				}
-				
+							
 				if(Objects.nonNull(project)) {
 					project.getMaterials().addAll(fetchMaterialsForProject(conn, projectId));
 					project.getSteps().addAll(fetchStepsForProject(conn, projectId));
@@ -136,11 +136,11 @@ public class ProjectDao extends DaoBase {
 			}
 			catch(Exception e) {
 				rollbackTransaction(conn);
-				throw new DbExceptionn(e);
+				throw new DbException(e);
 			}
 		}
 		catch(SQLException e) {
-			throw new DbExceptionn(e);
+			throw new DbException(e);
 		}
 	}
 
@@ -238,11 +238,11 @@ public class ProjectDao extends DaoBase {
 			}
 			catch(Exception e) {
 				rollbackTransaction(conn);
-				throw new DbExceptionn(e);
+				throw new DbException(e);
 			}
 		}
 		catch(SQLException e) {
-			throw new DbExceptionn(e);
+			throw new DbException(e);
 		}
 	}
 
@@ -265,11 +265,11 @@ public class ProjectDao extends DaoBase {
 			}
 			catch(Exception e) {
 				rollbackTransaction(conn);
-				throw new DbExceptionn(e);
+				throw new DbException(e);
 			}
 		}
 		catch(SQLException e) {
-			throw new DbExceptionn(e);
+			throw new DbException(e);
 		}
 	}
 

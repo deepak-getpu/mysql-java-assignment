@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import projects.exception.DbExceptionn;
+import projects.exception.DbException;
 
 /**
  * 
@@ -34,7 +34,7 @@ public class DbConnection {
 			
 		} catch (SQLException e) {
 			System.out.println("Error getting the connection.");
-			throw new DbExceptionn(e);  
+			throw new DbException(e);  
 			         
 		}
 	}
